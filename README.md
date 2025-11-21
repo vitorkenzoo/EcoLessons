@@ -2,11 +2,12 @@
 
 ## 📋 Sobre o Projeto
 
-A **EcoLesson API** é uma API RESTful desenvolvida em .NET 8 que serve como a espinha dorsal de uma plataforma de requalificação profissional. A plataforma conecta profissionais que buscam se adaptar ao mercado, empresas que cadastram vagas e cursos educacionais para reskilling, visando diminuir a desigualdade e permitir que usuários adquiram certificados e se candidatem a vagas.
+A **EcoLesson API** é uma API RESTful desenvolvida em .NET 8 que serve como a espinha dorsal de uma plataforma de requalificação profissional. A plataforma conecta profissionais que buscam se adaptar ao mercado, empresas que cadastram vagas e cursos educacionais para reskilling, visando diminuir a desigualdade e permitir que usuários façam cursos e adquiram certificados e se candidatem a vagas.
 
-## 🎯 Objetivo
+## Integrantes
 
-Este projeto foi desenvolvido para a disciplina **ADVANCED BUSINESS DEVELOPMENT WITH .NET** da FIAP Global Solution, seguindo todas as especificações para atingir a nota máxima (100 pontos).
+Adriano Barutti Pessuto - RM556760
+Vitor Kenzo Mizumoto - RM557245
 
 ---
 
