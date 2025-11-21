@@ -1,0 +1,6 @@
+@ReSkillFutureAPI_HostAddress = http://localhost:5030
+
+GET {{ReSkillFutureAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

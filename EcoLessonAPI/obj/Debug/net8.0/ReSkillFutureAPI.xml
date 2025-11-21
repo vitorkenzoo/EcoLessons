@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ReSkillFutureAPI</name>
+    </assembly>
+    <members>
+        <member name="T:ReSkillFutureAPI.Controllers.AuthController">
+            <summary>
+            Controller para autenticação e registro de usuários
+            </summary>
+        </member>
+        <member name="M:ReSkillFutureAPI.Controllers.AuthController.Register(ReSkillFutureAPI.DTOs.RegisterDTO)">
+            <summary>
+            Registra um novo usuário na plataforma
+            </summary>
+            <param name="registerDto">Dados do novo usuário</param>
+            <returns>Dados do usuário criado com links HATEOAS</returns>
+            <response code="201">Usuário criado com sucesso</response>
+            <response code="400">Dados inválidos ou email/CPF já cadastrado</response>
+        </member>
+        <member name="M:ReSkillFutureAPI.Controllers.AuthController.Login(ReSkillFutureAPI.DTOs.LoginDTO)">
+            <summary>
+            Autentica um usuário e retorna um token JWT
+            </summary>
+            <param name="loginDto">Credenciais de login (email e senha)</param>
+            <returns>Token JWT e data de expiração</returns>
+            <response code="200">Login realizado com sucesso</response>
+            <response code="400">Dados inválidos</response>
+            <response code="401">Credenciais inválidas</response>
+        </member>
+        <member name="M:ReSkillFutureAPI.Controllers.AuthController.GetUsuario(System.Decimal)">
+            <summary>
+            Obtém dados de um usuário específico
+            </summary>
+            <param name="id">ID do usuário</param>
+            <returns>Dados do usuário</returns>
+            <response code="200">Usuário encontrado</response>
+            <response code="404">Usuário não encontrado</response>
+        </member>
+        <member name="T:ReSkillFutureAPI.Controllers.V2.EmpresasV2Controller">
+            <summary>
+            Controller v2 para gerenciamento de empresas
+            Versão melhorada com busca por nome
+            </summary>
+        </member>
+        <member name="M:ReSkillFutureAPI.Controllers.V2.EmpresasV2Controller.GetEmpresas(System.Int32,System.Int32,System.String)">
+            <summary>
+            Lista empresas com paginação e busca por nome (v2)
+            </summary>
+            <param name="page">Número da página (padrão: 1)</param>
+            <param name="pageSize">Itens por página (padrão: 10, máximo: 100)</param>
+            <param name="search">Buscar por nome ou razão social (opcional)</param>
+            <returns>Lista paginada de empresas</returns>
+        </member>
+        <member name="M:ReSkillFutureAPI.Controllers.V2.EmpresasV2Controller.GetEmpresa(System.Decimal)">
+            <summary>
+            Obtém uma empresa específica (v2)
+            </summary>
+        </member>
+        <member name="T:ReSkillFutureAPI.Controllers.V2.VagasV2Controller">
+            <summary>
+            Controller v2 para gerenciamento de vagas de emprego
+            Versão melhorada com filtros adicionais e ordenação
+            </summary>
+        </member>
+        <member name="M:ReSkillFutureAPI.Controllers.V2.VagasV2Controller.GetVagas(System.Int32,System.Int32,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String)">
+            <summary>
+            Lista vagas de emprego com paginação, filtros e ordenação (v2)
+            </summary>
+            <param name="page">Número da página (padrão: 1)</param>
+            <param name="pageSize">Itens por página (padrão: 10, máximo: 100)</param>
+            <param name="empresaId">Filtrar por ID da empresa (opcional)</param>
+            <param name="salarioMin">Salário mínimo (opcional)</param>
+            <param name="orderBy">Ordenar por: nome, salario, data (padrão: data)</param>
+            <returns>Lista paginada de vagas</returns>
+            <response code="200">Lista de vagas retornada com sucesso</response>
+        </member>
+        <member name="M:ReSkillFutureAPI.Controllers.V2.VagasV2Controller.GetVaga(System.Decimal)">
+            <summary>
+            Obtém uma vaga específica (v2)
+            </summary>
+        </member>
+        <member name="T:ReSkillFutureAPI.Controllers.VagasController">
+            <summary>
+            Controller para gerenciamento de vagas de emprego
+            </summary>
+        </member>
+        <member name="M:ReSkillFutureAPI.Controllers.VagasController.GetVagas(System.Int32,System.Int32,System.Nullable{System.Decimal})">
+            <summary>
+            Lista vagas de emprego com paginação
+            </summary>
+            <param name="page">Número da página (padrão: 1)</param>
+            <param name="pageSize">Itens por página (padrão: 10, máximo: 100)</param>
+            <param name="empresaId">Filtrar por ID da empresa (opcional)</param>
+            <returns>Lista paginada de vagas</returns>
+            <response code="200">Lista de vagas retornada com sucesso</response>
+        </member>
+        <member name="M:ReSkillFutureAPI.Controllers.VagasController.GetVaga(System.Decimal)">
+            <summary>
+            Obtém uma vaga específica por ID
+            </summary>
+            <param name="id">ID da vaga</param>
+            <returns>Dados da vaga com links HATEOAS</returns>
+            <response code="200">Vaga encontrada</response>
+            <response code="404">Vaga não encontrada</response>
+        </member>
+        <member name="M:ReSkillFutureAPI.Controllers.VagasController.CreateVaga(ReSkillFutureAPI.DTOs.VagaCreateDTO)">
+            <summary>
+            Cria uma nova vaga de emprego
+            </summary>
+            <param name="createDto">Dados da nova vaga</param>
+            <returns>Vaga criada com links HATEOAS</returns>
+            <response code="201">Vaga criada com sucesso</response>
+            <response code="400">Dados inválidos ou empresa não encontrada</response>
+        </member>
+        <member name="T:ReSkillFutureAPI.DTOs.RegisterDTO">
+            <summary>
+            DTO para registro de novo usuário
+            </summary>
+        </member>
+        <member name="P:ReSkillFutureAPI.DTOs.RegisterDTO.Nome">
+            <summary>
+            Nome completo do usuário
+            </summary>
+            <example>João Silva</example>
+        </member>
+        <member name="P:ReSkillFutureAPI.DTOs.RegisterDTO.EmailUsuario">
+            <summary>
+            Email do usuário (deve ser único)
+            </summary>
+            <example>joao.silva@email.com</example>
+        </member>
+        <member name="P:ReSkillFutureAPI.DTOs.RegisterDTO.Senha">
+            <summary>
+            Senha do usuário (será hasheada antes de ser armazenada)
+            </summary>
+            <example>senha123</example>
+        </member>
+        <member name="P:ReSkillFutureAPI.DTOs.RegisterDTO.Cpf">
+            <summary>
+            CPF do usuário (deve ser único)
+            </summary>
+            <example>12345678900</example>
+        </member>
+        <member name="T:ReSkillFutureAPI.DTOs.LoginDTO">
+            <summary>
+            DTO para login de usuário
+            </summary>
+        </member>
+        <member name="P:ReSkillFutureAPI.DTOs.LoginDTO.EmailUsuario">
+            <summary>
+            Email do usuário
+            </summary>
+            <example>joao.silva@email.com</example>
+        </member>
+        <member name="P:ReSkillFutureAPI.DTOs.LoginDTO.Senha">
+            <summary>
+            Senha do usuário
+            </summary>
+            <example>senha123</example>
+        </member>
+        <member name="T:ReSkillFutureAPI.DTOs.AuthResponseDTO">
+            <summary>
+            DTO de resposta de autenticação
+            </summary>
+        </member>
+        <member name="P:ReSkillFutureAPI.DTOs.AuthResponseDTO.Token">
+            <summary>
+            Token JWT para autenticação nas requisições
+            </summary>
+            <example>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</example>
+        </member>
+        <member name="P:ReSkillFutureAPI.DTOs.AuthResponseDTO.ExpiresAt">
+            <summary>
+            Data e hora de expiração do token
+            </summary>
+            <example>2024-12-10T20:00:00Z</example>
+        </member>
+        <member name="T:ReSkillFutureAPI.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:ReSkillFutureAPI.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ReSkillFutureAPI.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ReSkillFutureAPI.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ReSkillFutureAPI.Migrations.AddIdentityColumns">
+            <inheritdoc />
+        </member>
+        <member name="M:ReSkillFutureAPI.Migrations.AddIdentityColumns.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ReSkillFutureAPI.Migrations.AddIdentityColumns.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ReSkillFutureAPI.Migrations.AddIdentityColumns.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
