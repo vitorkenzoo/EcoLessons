@@ -7,6 +7,7 @@ A **EcoLesson API** é uma API RESTful desenvolvida em .NET 8 que serve como a e
 ## Integrantes
 
 Adriano Barutti Pessuto - RM556760
+
 Vitor Kenzo Mizumoto - RM557245
 
 ---
